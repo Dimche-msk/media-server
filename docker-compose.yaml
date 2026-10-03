@@ -1,0 +1,31 @@
+services:
+  media-server:
+    build: .
+    container_name: media_server
+    # Путь к кэшу/базе — вынесен в volume, чтобы выживать после рестарта
+    volumes:
+      - ./movies:/movies
+      - ./db:/data
+      - ./config.yaml:/config.yaml:ro
+    ports:
+      - "8080:8080"
+    environment:
+      - CONFIG_PATH=/config.yaml
+      - MOVIE_ROOT=/movies
+    restart: unless-stopped
+    # qBittorrent Web-API внутри compose (опционально)
+    # Уберите секцию ниже, если qBittorrent внешний
+    depends_on:
+      - qbittorrent
+
+  qbittorrent:
+    image: lscr.io/jellyfin/qbittorrent:latest
+    container_name: qbittorrent
+    volumes:
+      - ./db:/data
+      - ./downloads:/download
+    environment:
+      - __qb_enable: 1
+    ports:
+      - "8081:8080"
+    restart: unless-stopped

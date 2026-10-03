@@ -1,0 +1,33 @@
+# Пример конфигурации media_server.
+#
+# Копируйте в /etc/media-server/config.yaml или в каталог запуска
+# и укажите его через -config или переменную CONFIG_PATH.
+#
+# Приоритет переменных окружения:
+#   MOVIE_ROOT, SERVER_PORT, QB_URL, QB_PASSWORD
+# (см. backend/internal/config.go)
+
+movie_root: /movies
+server_port: "8080"
+refresh_secs: 300
+
+# Подключение к qBittorrent Web-API.
+# Если не задано — функции qBittorrent отключаются (graceful degradation).
+qbittorrent:
+  url: "http://qbittorrent:8080"
+  password: "admin"
+
+# Пользователи. Если список пуст — при первом запуске создаётся
+# дефолтный админ: username=admin, password=changeme (только для
+# smoke-test; в продакшене задайте своих пользователей).
+#
+#   username: имя пользователя
+#   password: пароль (в plain-тексте, будет хэширован argon2 при загрузке)
+#   role:     user | admin
+# users:
+#   - username: admin
+#     password: s3cret!
+#     role: admin
+#   - username: alice
+#     password: w4ll00py
+#     role: user

@@ -1,0 +1,26 @@
+# frontend: кеш и артефакты
+frontend/node_modules
+frontend/dist
+backend/web
+
+# бэкенд
+backend/media_server
+backend/*.db
+backend/*.db-journal
+backend/*.db-wal
+
+# docker и репозиторий
+.docker
+docker-compose*.yml
+Dockerfile*
+*.md
+.git
+.gitignore
+.editorconfig
+TASK.md
+config.yaml
+media_server.db
+
+# IDE
+.vscode
+.idea
