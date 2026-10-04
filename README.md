@@ -1,5 +1,5 @@
 # Проект не работает! Попытка разработки локальной моделью Ternary Bonsai2 (QWEN3.8 27B) на RTX5060Ti 16GB 
-# модель https://huggingface.co/collections/prism-ml/bonsai-2
+# модель https://huggingface.co/prism-ml/Ternary-Bonsai-2-27B-gguf
 # Media Server
 
 Лайт-веб-интерфейс и бэкенд для каталога фильмов и qBittorrent-каталого.
